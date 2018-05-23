@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of itemArray">
+                <tr *ngFor="let item of itemArray | paginate: { itemsPerPage: 3, currentPage: p }  ">
 
                     <td>{{item.$key}}</td>
                     <td>{{item.name}}</td>
@@ -46,5 +46,6 @@
             </tbody>
         </table>
 
+        <pagination-controls (pageChange)="p = $event" *ngIf="!loading"></pagination-controls>
 
     </div>
