@@ -1,0 +1,91 @@
+<div class=" uk-padding"  >
+  <span *ngIf="!loaded" >
+    <div class="sk-circle">
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
+    </div>  </span>
+
+    <table class="uk-table uk-table-striped" *ngIf="loaded" >
+        <thead>
+
+            <tr>
+           <ng-container>
+                <th>$key</th>
+                <th>name</th>
+                <th>phone</th>
+                <th>skill</th>
+                <th>province</th>
+                <th>price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+            </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of itemArray">
+                <ng-container *ngIf="item.uid === myUid" >
+                <td>{{item.$key}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.skill}}</td>
+                <td>{{item.province}}</td>
+                <td>{{item.price}}</td>
+                <td> <button class="uk-button uk-button-primary uk-button-small" type="button" uk-toggle="target: #modal-example" (click)="editForm(item.$key)"><span uk-icon="file-edit"></span> تعديل </button></td>
+                <td> <button class="uk-button uk-button-danger uk-button-small" (click)="onDelete(item.$key)" ><span uk-icon="trash"></span> مسح </button></td>
+
+
+                <!-- This is the modal -->
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+
+        <fieldset class="uk-fieldset">
+
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="اسمك" name="name"   [(ngModel)]="data.name">
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="number" placeholder="رقم الهاتف" name="phone"  [(ngModel)]="data.phone">
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="المهارة" name="skill"  [(ngModel)]="data.skill">
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="المحافظة" name="province"  [(ngModel)]="data.province" >
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="number" placeholder="السعر" name="price"  [(ngModel)]="data.price">
+            </div>
+
+            <div class="uk-margin">
+                <textarea class="uk-textarea" rows="5" placeholder="ملاحظات" name="comments"  [(ngModel)]="data.comments"></textarea>
+            </div>
+
+        </fieldset>
+
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button"> <span uk-icon="close"></span> اغلاق</button>
+            <button class="uk-button uk-button-primary uk-modal-close" type="button" (click)="onEdit(item.$key)"><span uk-icon="check"></span> حفظ </button>
+
+        </p>
+    </div>
+</div>
+
+</ng-container>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+</div>

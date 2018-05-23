@@ -1,0 +1,98 @@
+<nav class="uk-navbar-container" uk-navbar>
+
+
+
+  <div class="uk-navbar-right">
+
+      <ul class="uk-navbar-nav">
+          <li class="uk-active"><a routerLink="/"> حرفة</a></li>
+
+          <li *ngIf="!isLoggedIn"><a href="#modal-Rejister" uk-toggle>التسجيل</a></li>
+            <li *ngIf="!isLoggedIn"><a href="#modal-login" uk-toggle>الدخول</a></li>
+
+          <li><a routerLink="/allskills">المهارات</a></li>
+          <li *ngIf="isLoggedIn"><a routerLink="/myskill">مهاراتي</a></li>
+
+
+      </ul>
+
+  </div>
+
+
+  <div class="uk-navbar-left">
+
+    <ul class="uk-navbar-nav">
+
+
+
+        <li *ngIf="isLoggedIn">
+          <a href="#">حسابك الشخصي</a>
+          <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li>   <a routerLink="/addskill">اضف</a> </li>
+                <li>   <a routerLink="/userprofile">معلوماتك</a> </li>
+
+                  <li><a href="#" (click)="logout()"> خروج</a></li>
+              </ul>
+          </div>
+      </li>
+    </ul>
+</div>
+</nav>
+
+
+<!--Rejister-->
+
+
+<div id="modal-Rejister" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <fieldset class="uk-fieldset">
+
+
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="البريد الالكتروني" name="email" [(ngModel)]="email">
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="كلمة السر" name="password" [(ngModel)]="password">
+            </div>
+
+        </fieldset>
+
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">الغاء </button>
+            <button class="uk-button uk-button-default uk-modal-close" type="button" (click)="myRegister()">دخول </button>
+        </p>
+        <a (click)="signInWithFacebook()" class="uk-modal-close"><i class="fab fa-facebook-square fa-2x"></i></a>
+        <a (click)="signInWithGoogle()" class="uk-modal-close"><i class="fab fa-google-plus-square fa-2x"></i></a>
+
+    </div>
+</div>
+
+
+
+
+
+<!--LogIn-->
+<div id="modal-login" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <fieldset class="uk-fieldset">
+
+
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="البريد الالكتروني" name="email" [(ngModel)]="email">
+            </div>
+            <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="كلمة السر" name="password" [(ngModel)]="password">
+            </div>
+
+        </fieldset>
+
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">الغاء </button>
+            <button class="uk-button uk-button-default uk-modal-close" type="button" (click)="myLogin()">دخول </button>
+        </p>
+        <a (click)="logInWithFacebook()" class="uk-modal-close"><i class="fab fa-facebook-square fa-2x"></i></a>
+        <a (click)="logInWithGoogle()" class="uk-modal-close"><i class="fab fa-google-plus-square fa-2x"></i></a>
+
+    </div>
+</div>
