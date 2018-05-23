@@ -11,7 +11,7 @@ import {Router } from '@angular/router';
 })
 export class AllskillsComponent implements OnInit {
 
-
+p: any ;
 
   itemList: AngularFireList<any>
 

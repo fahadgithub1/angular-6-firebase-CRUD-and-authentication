@@ -1,6 +1,6 @@
-<div class=" uk-padding"  >
+<div class=" uk-padding">
 
-  <span *ngIf="!loaded" >
+    <span *ngIf="!loaded">
     <div class="sk-circle">
       <div class="sk-circle1 sk-child"></div>
       <div class="sk-circle2 sk-child"></div>
@@ -17,35 +17,35 @@
     </div>  </span>
 
 
-        <table class="uk-table uk-table-striped">
-            <thead>
-                <tr>
-                    <th>$key</th>
-                    <th>name</th>
+    <table class="uk-table uk-table-striped">
+        <thead *ngIf="loaded">
+            <tr>
+                <th>$key</th>
+                <th>name</th>
 
-                    <th>skill</th>
-                    <th>province</th>
-
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of itemArray | paginate: { itemsPerPage: 3, currentPage: p }  ">
-
-                    <td>{{item.$key}}</td>
-                    <td>{{item.name}}</td>
-
-                    <td>{{item.skill}}</td>
-                    <td>{{item.province}}</td>
-                    <td> <button class="uk-button uk-button-default uk-margin-small-right" type="button"   (click)="moreInfo(item.$key)">Details</button></td>
+                <th>skill</th>
+                <th>province</th>
 
 
-                </tr>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of itemArray | paginate: { itemsPerPage: 3, currentPage: p }  ">
+
+                <td>{{item.$key}}</td>
+                <td>{{item.name}}</td>
+
+                <td>{{item.skill}}</td>
+                <td>{{item.province}}</td>
+                <td> <button class="uk-button uk-button-default uk-margin-small-right" type="button" (click)="moreInfo(item.$key)">Details</button></td>
 
 
-            </tbody>
-        </table>
+            </tr>
 
-        <pagination-controls (pageChange)="p = $event" *ngIf="!loading"></pagination-controls>
 
-    </div>
+        </tbody>
+    </table>
+
+    <pagination-controls (pageChange)="p = $event" *ngIf="loaded"></pagination-controls>
+
+</div>
