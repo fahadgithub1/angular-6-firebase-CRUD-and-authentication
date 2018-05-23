@@ -21,8 +21,8 @@ data = {
   comments :  '' ,
   skill :  '' ,
   province :  '' ,
-  price :  '' 
- } 
+  price :  ''
+ }
  loaded:boolean=false
 
 myUid:any
@@ -36,7 +36,7 @@ myUid:any
             let y = action.payload.toJSON()
             y["$key"] = action.key
             this.itemArray.push(y as ListItemClass)
-            this.loaded=true 
+            this.loaded=true
 })
     })
 
@@ -62,21 +62,21 @@ this.myUid =  localStorage.getItem('uid')
         this.data.province = value['province'] ;
         this.data.price = value['price'] ;
       }
-     
-      
+
+
     }
   }
-  
+
 
 
   onEdit( $key ){
- 
-    this.data.name 
-    this.data.phone  
-    this.data.comments  
-    this.data.skill  
-    this.data.province  
-    this.data.price  
+
+    this.data.name
+    this.data.phone
+    this.data.comments
+    this.data.skill
+    this.data.province
+    this.data.price
 
     this.itemList.set($key , {
       name : this.data.name ,
@@ -87,9 +87,9 @@ this.myUid =  localStorage.getItem('uid')
       price :  this.data.price  ,
       uid:this.myUid
     })
-  
+
     this.itemArray = []
-    
+
 
 
   }

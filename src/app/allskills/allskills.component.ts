@@ -23,13 +23,13 @@ data = {
   comments :  '' ,
   skill :  '' ,
   province :  '' ,
-  price :  '' 
- } 
+  price :  ''
+ }
  loaded:boolean=false
 
 
 
-  constructor(public db:AngularFireDatabase , public router:Router  ) { 
+  constructor(public db:AngularFireDatabase , public router:Router  ) {
 
     this.itemList = db.list('skills')
 
@@ -39,27 +39,27 @@ data = {
             let y = action.payload.toJSON()
             y["$key"] = action.key
             this.itemArray.push(y as ListItemClass)
-            this.loaded=true 
+            this.loaded=true
 })
  })
 
 
     console.log(this.itemArray)
 
- 
+
   }
 
   ngOnInit() {
   }
 
- 
+
   moreInfo(  key){
-    
+
     this.router.navigate(['details/'+key])
-  
+
   }
 
- 
+
 
 
 
